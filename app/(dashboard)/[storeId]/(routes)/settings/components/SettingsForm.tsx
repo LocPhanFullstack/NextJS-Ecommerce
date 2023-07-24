@@ -15,6 +15,8 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import Heading from '@/components/ui/Heading';
+import { AlertModal } from '@/components/modals/alert-modal';
+import { ApiAlert } from '@/components/ui/api-alert';
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -68,6 +70,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
     return (
         <>
+            <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onDelete} loading={loading} />
             <div className="flex items-center justify-between">
                 <Heading title="Store settings" description="Manage store preferences" />
                 <Button disabled={loading} variant="destructive" size="sm" onClick={() => setOpen(true)}>
@@ -98,6 +101,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
                 </form>
             </Form>
             <Separator />
+            <ApiAlert title="test" description="test-desc" />
         </>
     );
 };

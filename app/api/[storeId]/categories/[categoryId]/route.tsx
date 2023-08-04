@@ -12,6 +12,9 @@ export async function GET(req: Request, { params }: { params: { storeId: string;
             where: {
                 id: params.categoryId,
             },
+            include: {
+                billboard: true,
+            },
         });
 
         return NextResponse.json(category);

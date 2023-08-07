@@ -40,8 +40,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
 
     const onStoreSelect = (store: { value: string; label: string }) => {
         setOpen(false);
-        router.refresh();
-        router.push(`${store.value}`);
+        router.replace(`/${store.value}`);
     };
 
     return (
